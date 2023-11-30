@@ -31,6 +31,16 @@ struct LogInViewModel {
     
     func logIn(WithEmail email: String, password: String, _ completion:@escaping(_ success: Bool, _ errorReason: String?) -> Void) {
         
+        if email.count == 0 {
+            completion(false, "Email is empty")
+            return
+        }
+        
+        if password.count == 0 {
+            completion(false, "Password is empty")
+            return
+        }
+        
         let isValidEmailFormat = isValidEmailFormat(email)
         
         if isValidEmailFormat == false {
